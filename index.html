@@ -57,46 +57,11 @@
 </head>
 <body>
 
-<h1>Click to see the flag 🇺🇳</h1>
+<h1>Click the country to see the flag 🌍</h1>
 
-<div class="grid">
+<div class="grid" id="countriesGrid"></div>
 
-  <div class="card" onclick="toggleFlag('france')">
-    <div class="country">France</div>
-    <div class="flag">
-      <img id="france" src="https://flagcdn.com/w320/fr.png">
-    </div>
-  </div>
-
-  <div class="card" onclick="toggleFlag('thailand')">
-    <div class="country">Thailand</div>
-    <div class="flag">
-      <img id="thailand" src="https://flagcdn.com/w320/th.png">
-    </div>
-  </div>
-
-  <div class="card" onclick="toggleFlag('japan')">
-    <div class="country">Japan</div>
-    <div class="flag">
-      <img id="japan" src="https://flagcdn.com/w320/jp.png">
-    </div>
-  </div>
-
-  <div class="card" onclick="toggleFlag('uk')">
-    <div class="country">United Kingdom</div>
-    <div class="flag">
-      <img id="uk" src="https://flagcdn.com/w320/gb.png">
-    </div>
-  </div>
-
-</div>
-
-<script>
-  function toggleFlag(id) {
-    const img = document.getElementById(id);
-    img.style.display = img.style.display === "none" ? "block" : "none";
-  }
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
