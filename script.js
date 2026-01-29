@@ -36,6 +36,7 @@ function render() {
   questionAnswered = false;
 
   if (mode === "quiz") {
+    console.log(foundCountries);
     questionAnswered = false;
 
     if (remainingCountries.length === 0) {
@@ -70,7 +71,7 @@ function render() {
 
     card.appendChild(nameDiv);
 
-    if (mode === "ball") {
+
       const flagDiv = document.createElement("div");
       flagDiv.className = "flag";
 
@@ -79,9 +80,12 @@ function render() {
 
       const img = document.createElement("img");
       img.src = `https://flagcdn.com/w320/${country.code}.png`;
-      img.style.display = "none";
 
-      flagDiv.appendChild(placeholder);
+      if (!foundCountries.includes(country.code)){
+        img.style.display = "none";
+        flagDiv.appendChild(placeholder);
+      }
+      
       flagDiv.appendChild(img);
       card.appendChild(flagDiv);
 
@@ -91,7 +95,7 @@ function render() {
         placeholder.style.display = isHidden ? "none" : "block";
         img.style.display = isHidden ? "block" : "none";
       });
-    }
+
 
     if (mode === "quiz") {
       card.addEventListener("click", () => {
@@ -99,10 +103,11 @@ function render() {
 
         if (country.code === currentQuestion.code) {
           questionAnswered = true;
-
+          foundCountries.push(country.code);
           questionText.textContent = "✅ Correct!";
           quizFlag.style.display = "none";
 
+/*
           // Show flag under correct country
           const flagDiv = document.createElement("div");
           flagDiv.className = "flag";
@@ -111,7 +116,7 @@ function render() {
           img.src = `https://flagcdn.com/w320/${country.code}.png`;
 
           flagDiv.appendChild(img);
-          card.appendChild(flagDiv);
+          card.appendChild(flagDiv); */
 
           // Remove from remaining questions
           remainingCountries = remainingCountries.filter(
