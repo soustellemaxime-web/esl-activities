@@ -85,13 +85,13 @@ function render() {
         img.style.display = "none";
         flagDiv.appendChild(placeholder);
       }
-      
+
       flagDiv.appendChild(img);
       card.appendChild(flagDiv);
 
       card.addEventListener("click", () => {
-        const isHidden = img.style.display === "none";
 
+        const isHidden = img.style.display === "none";
         placeholder.style.display = isHidden ? "none" : "block";
         img.style.display = isHidden ? "block" : "none";
       });
@@ -107,24 +107,10 @@ function render() {
           questionText.textContent = "✅ Correct!";
           quizFlag.style.display = "none";
 
-/*
-          // Show flag under correct country
-          const flagDiv = document.createElement("div");
-          flagDiv.className = "flag";
-
-          const img = document.createElement("img");
-          img.src = `https://flagcdn.com/w320/${country.code}.png`;
-
-          flagDiv.appendChild(img);
-          card.appendChild(flagDiv); */
-
           // Remove from remaining questions
           remainingCountries = remainingCountries.filter(
             c => c.code !== country.code
           );
-
-          // Add to answered countries
-          foundCountries.push(country);
 
           document.getElementById("nextBtn").style.display = "inline-block";
         } else {
