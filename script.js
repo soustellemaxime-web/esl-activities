@@ -16,25 +16,100 @@ const countries = [
   { name: "India", code: "in" }
 ];
 
+let mode = "ball";
+let currentQuestion = null;
+let questionAnswered = false;
+
 const grid = document.getElementById("countriesGrid");
+const questionText = document.getElementById("question");
+const quizFlag = document.getElementById("quizFlag");
 
-countries.forEach(country => {
-  const card = document.createElement("div");
-  card.className = "card";
+function getRandomCountry() {
+  return countries[Math.floor(Math.random() * countries.length)];
+}
 
-  card.innerHTML = `
-    <div class="country">${country.name}</div>
-    <div class="flag">
-      <img src="https://flagcdn.com/w320/${country.code}.png" />
-    </div>
-  `;
+function render() {
+  grid.innerHTML = "";
+  questionAnswered = false;
 
-  const img = card.querySelector("img");
-  img.style.display = "none";
+  if (mode === "quiz") {
+    currentQuestion = getRandomCountry();
+    questionText.textContent = "Which country is this flag?";
+    quizFlag.src = `https://flagcdn.com/w320/${currentQuestion.code}.png`;
+    quizFlag.style.display = "block";
+  } else {
+    questionText.textContent = "";
+    quizFlag.style.display = "none";
+  }
 
-  card.addEventListener("click", () => {
-    img.style.display = img.style.display === "none" ? "block" : "none";
+  countries.forEach(country => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const nameDiv = document.createElement("div");
+    nameDiv.className = "country";
+    nameDiv.textContent = country.name;
+
+    card.appendChild(nameDiv);
+
+    if (mode === "ball") {
+      const flagDiv = document.createElement("div");
+      flagDiv.className = "flag";
+
+      const placeholder = document.createElement("div");
+      placeholder.className = "flag-placeholder";
+
+      const img = document.createElement("img");
+      img.src = `https://flagcdn.com/w320/${country.code}.png`;
+      img.style.display = "none";
+
+      flagDiv.appendChild(placeholder);
+      flagDiv.appendChild(img);
+      card.appendChild(flagDiv);
+
+      card.addEventListener("click", () => {
+        const isHidden = img.style.display === "none";
+
+        placeholder.style.display = isHidden ? "none" : "block";
+        img.style.display = isHidden ? "block" : "none";
+      });
+    }
+
+    if (mode === "quiz") {
+      card.addEventListener("click", () => {
+        if (questionAnswered) return;
+
+        if (country.code === currentQuestion.code) {
+          questionAnswered = true;
+          questionText.textContent = "✅ Correct!";
+          quizFlag.style.display = "none";
+
+          const flagDiv = document.createElement("div");
+          flagDiv.className = "flag";
+
+          const img = document.createElement("img");
+          img.src = `https://flagcdn.com/w320/${country.code}.png`;
+
+          flagDiv.appendChild(img);
+          card.appendChild(flagDiv);
+        } else {
+          questionText.textContent = "❌ Try again";
+        }
+      });
+    }
+
+    grid.appendChild(card);
   });
+}
 
-  grid.appendChild(card);
-});
+document.getElementById("ballMode").onclick = () => {
+  mode = "ball";
+  render();
+};
+
+document.getElementById("quizMode").onclick = () => {
+  mode = "quiz";
+  render();
+};
+
+render();
