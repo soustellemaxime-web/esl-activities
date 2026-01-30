@@ -1,20 +1,5 @@
-const countries = [
-  { name: "France", code: "fr" },
-  { name: "Thailand", code: "th" },
-  { name: "Japan", code: "jp" },
-  { name: "United Kingdom", code: "gb" },
-  { name: "United States", code: "us" },
-  { name: "China", code: "cn" },
-  { name: "South Korea", code: "kr" },
-  { name: "Spain", code: "es" },
-  { name: "Italy", code: "it" },
-  { name: "Germany", code: "de" },
-  { name: "Vietnam", code: "vn" },
-  { name: "Australia", code: "au" },
-  { name: "Canada", code: "ca" },
-  { name: "Brazil", code: "br" },
-  { name: "India", code: "in" }
-];
+import { countriesData } from "./data/countriesData.js";
+import { weatherData } from "./data/weatherData.js";
 
 let remainingCountries = [];
 let foundCountries = [];
@@ -28,7 +13,7 @@ const quizFlag = document.getElementById("quizFlag");
 const nextBtn = document.getElementById("nextBtn");
 
 function getRandomCountry() {
-  return countries[Math.floor(Math.random() * countries.length)];
+  return countriesData[Math.floor(Math.random() * countriesData.length)];
 }
 
 function render() {
@@ -61,7 +46,7 @@ function render() {
     quizFlag.style.display = "none";
   }
 
-  countries.forEach(country => {
+  countriesData.forEach(country => {
     const card = document.createElement("div");
     card.className = "card";
 
@@ -130,7 +115,7 @@ document.getElementById("ballMode").onclick = () => {
 
 document.getElementById("quizMode").onclick = () => {
   mode = "quiz";
-  remainingCountries = [...countries]; // copy
+  remainingCountries = [...countriesData]; // copy
   render();
 };
 
