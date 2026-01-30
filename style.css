@@ -112,3 +112,29 @@ body {
   gap: 8px;
   margin-top: 0;
 }
+
+.weather-container,
+.clothes-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.drop-zone {
+  width: 140px;
+  height: 140px;
+  border: 3px dashed #ccc;
+  border-radius: 16px;
+  text-align: center;
+  padding: 10px;
+}
+
+.drop-zone img {
+  width: 60px;
+}
+
+.clothes-item img {
+  width: 60px;
+  cursor: grab;
+}

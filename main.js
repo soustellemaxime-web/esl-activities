@@ -1,4 +1,5 @@
 import { renderCountries } from "./topics/countries.js";
+import { renderWeather } from "./topics/weather.js";
 
 const gameArea = document.getElementById("gameArea");
 
@@ -26,7 +27,7 @@ function render() {
 
   if (currentTopic === "weather") {
     document.getElementById("controls").style.display = "none";
-    gameArea.innerHTML = "<h2>Weather game coming soon 🌤️</h2>";
+    renderWeather(gameArea);
   }
 }
 
