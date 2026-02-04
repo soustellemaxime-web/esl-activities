@@ -21,6 +21,10 @@ function goToNextMain(gameArea) {
 export function renderServices(gameArea) {
   gameArea.innerHTML = "";
 
+  const servicesRoot = document.createElement("div");
+  servicesRoot.className = "services-root";
+  gameArea.appendChild(servicesRoot);
+
   const currentMain = servicesData[currentIndex];
   const total = currentMain.compounds.length;
   const found = foundRelated.length;
@@ -34,9 +38,9 @@ export function renderServices(gameArea) {
   const mainContainer = document.createElement("div");
   mainContainer.className = "services-main";
 
-  const mainImg = document.createElement("div");
-  mainImg.className = "img-placeholder";
-  mainImg.textContent = "📷";
+  const mainImg = document.createElement("img");
+  mainImg.className = "services-img";
+  mainImg.src = currentMain.img;
 
   const mainLabel = document.createElement("div");
   mainLabel.className = "label";
@@ -44,6 +48,11 @@ export function renderServices(gameArea) {
 
   mainContainer.appendChild(mainImg);
   mainContainer.appendChild(mainLabel);
+
+  // --- Separation ---
+  const arrow = document.createElement("div");
+  arrow.className = "services-arrow";
+  arrow.textContent = "➡️";
 
   // --- RELATED WORDS ---
   const relatedContainer = document.createElement("div");
@@ -54,9 +63,10 @@ export function renderServices(gameArea) {
     item.className = "related-item";
     item.dataset.id = word.id;
 
-    const img = document.createElement("div");
-    img.className = "img-placeholder";
-    img.textContent = "📷";
+    const img = document.createElement("img");
+    img.src = word.img;
+    img.className = "services-img";
+
 
     const label = document.createElement("div");
     label.className = "label";
@@ -69,7 +79,7 @@ export function renderServices(gameArea) {
         item.classList.add("correct");
     }
 
-    // 👉 CLICK HANDLER
+    // CLICK HANDLER
     item.addEventListener("click", () => {
         const currentMain = servicesData[currentIndex];
 
@@ -105,8 +115,46 @@ export function renderServices(gameArea) {
     relatedContainer.appendChild(item);
     });
 
+    const layout = document.createElement("div");
+    layout.className = "services-layout";
 
-  gameArea.appendChild(counter);
-  gameArea.appendChild(mainContainer);
-  gameArea.appendChild(relatedContainer);
+    layout.appendChild(mainContainer);
+    layout.appendChild(arrow);
+    layout.appendChild(relatedContainer);
+
+    servicesRoot.appendChild(counter);
+    servicesRoot.appendChild(layout);
+
+    // --- FOUND COMPOUNDS SECTION ---
+    const foundCompounds = currentMain.compounds.filter(c =>
+      foundRelated.includes(c.with)
+    );
+
+    if (foundCompounds.length > 0) {
+      const separator = document.createElement("hr");
+      separator.className = "services-separator";
+
+      const compoundsContainer = document.createElement("div");
+      compoundsContainer.className = "services-compounds";
+
+      foundCompounds.forEach(compound => {
+        const item = document.createElement("div");
+        item.className = "compound-item";
+
+        const img = document.createElement("img");
+        img.src = currentMain.img; // temporary
+        img.className = "services-img";
+
+        const label = document.createElement("div");
+        label.textContent = compound.result;
+
+        item.appendChild(img);
+        item.appendChild(label);
+        compoundsContainer.appendChild(item);
+      });
+
+      servicesRoot.appendChild(separator);
+      servicesRoot.appendChild(compoundsContainer);
+    }
+
 }

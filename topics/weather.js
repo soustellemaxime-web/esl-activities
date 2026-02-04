@@ -1,6 +1,9 @@
 import { weatherData, clothesData } from "../data/weatherData.js";
 
 function render(gameArea) {
+    const servicesRoot = document.createElement("div");
+    servicesRoot.className = "services-root";
+    gameArea.appendChild(servicesRoot);
 
     const clothesContainer = document.createElement("div");
     clothesContainer.className = "clothes-container";
@@ -21,7 +24,7 @@ function render(gameArea) {
         });
         clothesContainer.appendChild(clotheEl);
     });
-    gameArea.appendChild(clothesContainer);
+    servicesRoot.appendChild(clothesContainer);
 
     const weatherContainer = document.createElement("div");
     weatherContainer.className = "weather-container";
@@ -52,7 +55,7 @@ function render(gameArea) {
         });
         weatherContainer.appendChild(dropZone);
     });
-    gameArea.appendChild(weatherContainer);
+    servicesRoot.appendChild(weatherContainer);
 }
 
 export function renderWeather(gameArea) {
