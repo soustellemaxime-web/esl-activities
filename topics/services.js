@@ -83,6 +83,7 @@ export function renderServices(gameArea) {
         if (isCorrect) {
             foundRelated.push(word.id);
             item.classList.add("correct");
+            counter.textContent = `${foundRelated.length} / ${currentMain.compounds.length}`;
             const total = currentMain.compounds.length;
 
             if (foundRelated.length === total) {
