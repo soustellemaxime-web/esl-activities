@@ -50,14 +50,14 @@ export const servicesData = [
 ];
 
 export const servicesRelatedWords = [
-  { id: "boat", label: "Boat" },
-  { id: "car", label: "Car" },
-  { id: "driver", label: "Driver" },
-  { id: "fighter", label: "Fighter" },
-  { id: "jacket", label: "Jacket" },
-  { id: "man", label: "Man" },
-  { id: "officer", label: "Officer" },
-  { id: "station", label: "Station" },
-  { id: "truck", label: "Truck" },
-  { id: "woman", label: "Woman" }
+  { id: "boat", label: "Boat", img: "assets/services/related/boat.png" },
+  { id: "car", label: "Car", img: "assets/services/related/car.png" },
+  { id: "driver", label: "Driver", img: "assets/services/related/driver.png" },
+  { id: "fighter", label: "Fighter", img: "assets/services/related/fighter.png" },
+  { id: "jacket", label: "Jacket", img: "assets/services/related/jacket.png" },
+  { id: "man", label: "Man", img: "assets/services/related/man.png" },
+  { id: "officer", label: "Officer", img: "assets/services/related/officer.png" },
+  { id: "station", label: "Station", img: "assets/services/related/station.png" },
+  { id: "truck", label: "Truck", img: "assets/services/related/truck.png" },
+  { id: "woman", label: "Woman", img: "assets/services/related/woman.png" }
 ];
