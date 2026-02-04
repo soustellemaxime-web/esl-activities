@@ -1,10 +1,22 @@
-import {
-  servicesData,
-  servicesRelatedWords
-} from "../data/servicesData.js";
+import { servicesData, servicesRelatedWords } from "../data/servicesData.js";
 
 let currentIndex = 0;
 let foundRelated = [];
+
+function goToNextMain(gameArea) {
+  foundRelated = [];
+  currentIndex++;
+
+  if (currentIndex >= servicesData.length) {
+    gameArea.innerHTML = `
+      <h2>🎉 Well done!</h2>
+      <p>You finished all services.</p>
+    `;
+    return;
+  }
+
+  renderServices(gameArea);
+}
 
 export function renderServices(gameArea) {
   gameArea.innerHTML = "";
@@ -71,8 +83,19 @@ export function renderServices(gameArea) {
         if (isCorrect) {
             foundRelated.push(word.id);
             item.classList.add("correct");
-            renderServices(gameArea); // re-render to update counter
-        } else {
+            const total = currentMain.compounds.length;
+
+            if (foundRelated.length === total) {
+                // small delay so students see the last green one
+                setTimeout(() => {
+                goToNextMain(gameArea);
+                }, 600);
+            } else {
+                renderServices(gameArea);
+            }
+        }
+        
+        else {
             item.classList.add("wrong");
             setTimeout(() => item.classList.remove("wrong"), 500);
         }
