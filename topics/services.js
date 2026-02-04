@@ -2,23 +2,58 @@ import { servicesData, servicesRelatedWords } from "../data/servicesData.js";
 
 let currentIndex = 0;
 let foundRelated = [];
+let foundCompoundsHistory = [];
+let servicesFinished = false;
 
 function goToNextMain(gameArea) {
   foundRelated = [];
   currentIndex++;
 
   if (currentIndex >= servicesData.length) {
-    gameArea.innerHTML = `
-      <h2>🎉 Well done!</h2>
-      <p>You finished all services.</p>
-    `;
-    return;
-  }
+  servicesFinished = true;
+  renderServices(gameArea);
+  return;
+}
 
   renderServices(gameArea);
 }
 
 export function renderServices(gameArea) {
+  // Check if all services are finished
+  if (servicesFinished) {
+    gameArea.innerHTML = "";
+    const servicesRoot = document.createElement("div");
+    servicesRoot.className = "services-root";
+    gameArea.appendChild(servicesRoot);
+
+    const title = document.createElement("h2");
+    title.textContent = "Great job! These are the answers 👏";
+
+    const compoundsContainer = document.createElement("div");
+    compoundsContainer.className = "services-compounds";
+
+    foundCompoundsHistory.forEach(compound => {
+      const item = document.createElement("div");
+      item.className = "related-item compound-item";
+
+      const img = document.createElement("img");
+      img.src = compound.img || compound.mainImg;
+      img.className = "services-img";
+
+      const label = document.createElement("div");
+      label.textContent = compound.result;
+
+      item.appendChild(img);
+      item.appendChild(label);
+      compoundsContainer.appendChild(item);
+    });
+
+    servicesRoot.appendChild(title);
+    servicesRoot.appendChild(compoundsContainer);
+    return;
+  }
+
+
   gameArea.innerHTML = "";
 
   const servicesRoot = document.createElement("div");
@@ -96,6 +131,18 @@ export function renderServices(gameArea) {
             counter.textContent = `${foundRelated.length} / ${currentMain.compounds.length}`;
             const total = currentMain.compounds.length;
 
+            const compound = currentMain.compounds.find(
+              c => c.with === word.id
+            );
+
+            if (compound) {
+              foundCompoundsHistory.push({
+                ...compound,
+                mainLabel: currentMain.label,
+                mainImg: currentMain.img
+              });
+            }
+
             if (foundRelated.length === total) {
                 // small delay so students see the last green one
                 setTimeout(() => {
@@ -126,9 +173,7 @@ export function renderServices(gameArea) {
     servicesRoot.appendChild(layout);
 
     // --- FOUND COMPOUNDS SECTION ---
-    const foundCompounds = currentMain.compounds.filter(c =>
-      foundRelated.includes(c.with)
-    );
+    const foundCompounds = foundCompoundsHistory;
 
     if (foundCompounds.length > 0) {
       const separator = document.createElement("hr");
@@ -142,7 +187,7 @@ export function renderServices(gameArea) {
         item.className = "compound-item";
 
         const img = document.createElement("img");
-        img.src = currentMain.img; // temporary
+        img.src = compound.img;
         img.className = "services-img";
 
         const label = document.createElement("div");

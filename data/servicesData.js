@@ -4,9 +4,9 @@ export const servicesData = [
     label: "Ambulance",
     img: "assets/images/services/main/ambulance.png",
     compounds: [
-      { with: "driver", result: "Ambulance driver", img: null },
-      { with: "car", result: "Ambulance car", img: null },
-      { with: "station", result: "Ambulance station", img: null }
+    { with: "driver", result: "Ambulance driver", img: "assets/images/services/compounds/ambulancedriver.png" },
+      { with: "car", result: "Ambulance car", img: "assets/images/services/compounds/ambulancecar.png" },
+      { with: "station", result: "Ambulance station", img: "assets/images/services/compounds/ambulancestation.png" }
     ]
   },
   {
@@ -14,10 +14,10 @@ export const servicesData = [
     label: "Fire",
     img: "assets/images/services/main/fire.png",
     compounds: [
-      { with: "fighter", result: "Firefighter", img: null },
-      { with: "truck", result: "Fire truck", img: null },
-      { with: "station", result: "Fire station", img: null },
-      { with: "jacket", result: "Fire jacket", img: null }
+      { with: "fighter", result: "Firefighter", img: "assets/images/services/compounds/firefighter.png" },
+      { with: "truck", result: "Fire truck", img: "assets/images/services/compounds/firetruck.png" },
+      { with: "station", result: "Fire station", img: "assets/images/services/compounds/firestation.png" },
+      { with: "jacket", result: "Fire jacket", img: "assets/images/services/compounds/firejacket.png" }
     ]
   },
   {
@@ -25,8 +25,8 @@ export const servicesData = [
     label: "Life",
     img: "assets/images/services/main/life.png",
     compounds: [
-      { with: "boat", result: "Lifeboat", img: null },
-      { with: "jacket", result: "Life jacket", img: null }
+      { with: "boat", result: "Lifeboat", img: "assets/images/services/compounds/lifeboat.png" },
+      { with: "jacket", result: "Life jacket", img: "assets/images/services/compounds/lifejacket.png" }
     ]
   },
   {
@@ -34,11 +34,11 @@ export const servicesData = [
     label: "Police",
     img: "assets/images/services/main/police.png",
     compounds: [
-      { with: "officer", result: "Police officer", img: null },
-      { with: "station", result: "Police station", img: null },
-      { with: "car", result: "Police car", img: null },
-      { with: "man", result: "Policeman", img: null },
-      { with: "woman", result: "Policewoman", img: null }
+      { with: "officer", result: "Police officer", img: "assets/images/services/compounds/policeofficer.png" },
+      { with: "station", result: "Police station", img: "assets/images/services/compounds/policestation.png" },
+      { with: "car", result: "Police car", img: "assets/images/services/compounds/policecar.png" },
+      { with: "man", result: "Policeman", img: "assets/images/services/compounds/policeman.png" },
+      { with: "woman", result: "Policewoman", img: "assets/images/services/compounds/policewoman.png" }
     ]
   },
   {
@@ -46,8 +46,8 @@ export const servicesData = [
     label: "Truck",
     img: "assets/images/services/main/truck.png",
     compounds: [
-      { with: "driver", result: "Truck driver", img: null },
-      { with: "station", result: "Truck station", img: null }
+      { with: "driver", result: "Truck driver", img: "assets/images/services/compounds/truckdriver.png" },
+      { with: "station", result: "Truck station", img: "assets/images/services/compounds/truckstation.png" }
     ]
   }
 ];
