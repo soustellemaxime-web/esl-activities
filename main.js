@@ -1,5 +1,6 @@
 import { renderCountries } from "./topics/countries.js";
 import { renderWeather } from "./topics/weather.js";
+import { renderServices } from "./topics/services.js";
 
 const gameArea = document.getElementById("gameArea");
 
@@ -28,6 +29,11 @@ function render() {
   if (currentTopic === "weather") {
     document.getElementById("controls").style.display = "none";
     renderWeather(gameArea);
+  }
+
+  if (currentTopic === "services") {
+    document.getElementById("controls").style.display = "none";
+    renderServices(gameArea);
   }
 }
 

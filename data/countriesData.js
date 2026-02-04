@@ -13,5 +13,6 @@ export const countriesData = [
   { name: "Australia", code: "au" },
   { name: "Canada", code: "ca" },
   { name: "Brazil", code: "br" },
-  { name: "India", code: "in" }
+  { name: "India", code: "in" },
+  { name: "Greece", code: "gr" }
 ];
