@@ -1,3 +1,4 @@
+
 export const countriesData = [
   { name: "France", code: "fr" },
   { name: "Thailand", code: "th" },
@@ -14,5 +15,22 @@ export const countriesData = [
   { name: "Canada", code: "ca" },
   { name: "Brazil", code: "br" },
   { name: "India", code: "in" },
-  { name: "Greece", code: "gr" }
+  { name: "Greece", code: "gr" },
+
+  { name: "Cambodia", code: "kh" },
+  { name: "Laos", code: "la" },
+  { name: "Malaysia", code: "my" },
+  { name: "Indonesia", code: "id" },
+  { name: "Philippines", code: "ph" },
+  { name: "Singapore", code: "sg" },
+  { name: "Myanmar", code: "mm" },
+  { name: "Nepal", code: "np" },
+  { name: "Sri Lanka", code: "lk" },
+  { name: "Bangladesh", code: "bd" },
+  { name: "Pakistan", code: "pk" },
+  { name: "Turkey", code: "tr" },
+  { name: "Egypt", code: "eg" },
+  { name: "South Africa", code: "za" },
+  { name: "Argentina", code: "ar" },
+  { name: "New Zealand", code: "nz" }
 ];
