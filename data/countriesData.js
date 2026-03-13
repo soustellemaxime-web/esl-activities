@@ -15,9 +15,8 @@ export const countriesData = [
   { name: "Canada", code: "ca" },
   { name: "Brazil", code: "br" },
   { name: "India", code: "in" },
-  { name: "Greece", code: "gr" },
-
   { name: "Cambodia", code: "kh" },
+  /*
   { name: "Laos", code: "la" },
   { name: "Malaysia", code: "my" },
   { name: "Indonesia", code: "id" },
@@ -33,4 +32,5 @@ export const countriesData = [
   { name: "South Africa", code: "za" },
   { name: "Argentina", code: "ar" },
   { name: "New Zealand", code: "nz" }
+   */
 ];
